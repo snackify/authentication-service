@@ -1,8 +1,14 @@
 """empty message
 
+<<<<<<< HEAD:alembic/versions/2023_10_02_2141-eeaebb051259_.py
 Revision ID: eeaebb051259
 Revises:
 Create Date: 2023-10-02 21:41:35.938340
+=======
+Revision ID: db4d0aee6ac5
+Revises: 
+Create Date: 2023-10-07 15:34:54.652888
+>>>>>>> 5e3c2fa945465f113bd69c21bbfd78f0bd807b99:alembic/versions/2023_10_07_1534-db4d0aee6ac5_.py
 
 """
 from typing import Sequence, Union
@@ -13,7 +19,7 @@ from alembic import op
 
 
 # revision identifiers, used by Alembic.
-revision: str = 'eeaebb051259'
+revision: str = 'db4d0aee6ac5'
 down_revision: Union[str, None] = None
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
@@ -24,7 +30,7 @@ def upgrade() -> None:
     op.create_table('users',
                     sa.Column('username', sa.String(length=16), nullable=False),
                     sa.Column('email', sa.String(), nullable=False),
-                    sa.Column('name', sa.String(length=32), nullable=True),
+                    sa.Column('name', sa.String(length=32), nullable=False),
                     sa.Column('hashed_password', sa.String(length=64), nullable=False),
                     sa.Column('is_verified', sa.Boolean(), nullable=False),
                     sa.Column('id', sa.Integer(), nullable=False),
