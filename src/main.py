@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from fastapi import FastAPI, APIRouter
 
 from src.routers.base import all_routers
@@ -20,6 +22,10 @@ async def include_routers(routers):
 async def startup():
     """Executed before the server starts"""
 
-    print("Starting up...")
+    start_time = datetime.now()
+
     await include_routers(all_routers)
-    print('Successful start')
+
+    end_time = datetime.now()
+
+    print(f'Startup time: {end_time - start_time}')
