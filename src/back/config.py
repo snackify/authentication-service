@@ -2,6 +2,8 @@ from pydantic_settings import BaseSettings
 
 
 class Settings(BaseSettings):
+    """Loading environments from the .env file"""
+
     DB_NAME: str
     DB_USER: str
     DB_PASS: str

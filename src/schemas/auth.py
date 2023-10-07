@@ -2,6 +2,8 @@ from pydantic import BaseModel, EmailStr
 
 
 class UserRegistrationRequestSchema(BaseModel):
+    """Registration request scheme (DTO)"""
+
     username: str
     email: EmailStr
     name: str

@@ -13,8 +13,3 @@ auth_router = APIRouter(prefix='/v1/auth', tags=['Auth'])
 #         auth_service: Annotated[AuthService, Depends(auth_service)]
 # ):
 #     pass
-
-
-@auth_router.get('/test/')
-async def test():
-    return 'success'
