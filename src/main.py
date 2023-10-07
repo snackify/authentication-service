@@ -1,16 +1,17 @@
 from datetime import datetime
 
-from fastapi import FastAPI, APIRouter
+from fastapi import APIRouter, FastAPI
 
-from src.routers.base import all_routers
+from .routers.base import all_routers
 
-app = FastAPI(title='Authentication service')
+
+app = FastAPI(title="Authentication service")
 
 
 async def include_routers(routers):
     """Includes all routers specified in the all_routers tuple"""
 
-    api_router = APIRouter(prefix='/api')
+    api_router = APIRouter(prefix="/api")
 
     for router in routers:
         api_router.include_router(router)
@@ -28,4 +29,4 @@ async def startup():
 
     end_time = datetime.now()
 
-    print(f'Startup time: {end_time - start_time}')
+    print(f"Startup time: {end_time - start_time}")
