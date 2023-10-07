@@ -1,4 +1,4 @@
-from sqlalchemy import Integer, Column
+from sqlalchemy import Column, Integer
 from sqlalchemy.orm import DeclarativeBase
 
 
