@@ -1,14 +1,8 @@
 """empty message
 
-<<<<<<< HEAD:alembic/versions/2023_10_02_2141-eeaebb051259_.py
-Revision ID: eeaebb051259
-Revises:
-Create Date: 2023-10-02 21:41:35.938340
-=======
 Revision ID: db4d0aee6ac5
-Revises: 
+Revises:
 Create Date: 2023-10-07 15:34:54.652888
->>>>>>> 5e3c2fa945465f113bd69c21bbfd78f0bd807b99:alembic/versions/2023_10_07_1534-db4d0aee6ac5_.py
 
 """
 from typing import Sequence, Union
