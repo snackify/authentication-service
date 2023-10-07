@@ -1,6 +1,7 @@
-from sqlalchemy import Integer, Column
-from sqlalchemy.orm import DeclarativeBase
+from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 
 
 class Base(DeclarativeBase):
-    id = Column(Integer, primary_key=True, index=True)
+    """Base class from which other classes inherit"""
+
+    id: Mapped[int] = mapped_column(primary_key=True, index=True)
