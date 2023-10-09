@@ -1,4 +1,5 @@
-from pydantic import BaseModel, EmailStr
+from fastapi import HTTPException
+from pydantic import BaseModel, EmailStr, field_validator
 
 
 class UserRegistrationRequestSchema(BaseModel):
@@ -9,8 +10,8 @@ class UserRegistrationRequestSchema(BaseModel):
     name: str
     password: str
 
-    # @field_validator('username')
-    # def validate_username(cls, username):
-    #     if len(username) > 16:
-    #         raise HTTPException(status_code=422, detail='Username must be less than 16 characters')
-    #     return username
+    @field_validator("username")
+    def validate_username(cls, username):
+        if len(username) > 16:
+            raise HTTPException(status_code=422, detail="Username must be less than 16 characters")
+        return username
