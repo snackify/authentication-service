@@ -1,15 +1,14 @@
-from pydantic import Field
 from pydantic_settings import BaseSettings
 
 
 class Settings(BaseSettings):
     """Loading environments from the .env file"""
 
-    DB_NAME: str = Field(default="authentication")
-    DB_USER: str = Field(default="authentication")
-    DB_PASS: str = Field(default="authentication")
-    DB_PORT: int = Field(default=5432)
-    DB_HOST: str = Field(default="db")
+    DB_NAME: str
+    DB_USER: str
+    DB_PASS: str
+    DB_PORT: int
+    DB_HOST: str
 
     @property
     def SQLALCHEMY_URL(self):
