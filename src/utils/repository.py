@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from src.database.session import async_session
+from ..database.session import async_session
 
 
 class AbstractRepository(ABC):

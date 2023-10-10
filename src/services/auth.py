@@ -1,23 +1,20 @@
 from fastapi import HTTPException
 from sqlalchemy.exc import IntegrityError
 
-from src.schemas.auth import UserRegistrationRequestSchema
-from src.utils.repository import AbstractRepository
+from ..repositories.auth import AuthRepository
+from ..schemas.auth import UserRegistrationRequestSchema
+from ..utils.hash_password import HashPassword
 
 
-class AuthService:
-    def __init__(self, auth_repo: AbstractRepository):
-        self.auth_repo = auth_repo()
-
+class AuthService(AuthRepository, HashPassword):
     async def registration(self, user: UserRegistrationRequestSchema):
-        print(user)
-        user_dict = user.model_dump()  # todo вынести в репозиторий алхимии
+        user_dict = user.model_dump()
 
-        user_dict["hashed_password"] = user_dict.pop("password")
+        user_dict["hashed_password"] = self.create_hash(user_dict.pop("password"))
 
         try:
-            res = await self.auth_repo.add_one(user_dict)
+            res = await self.add_one(user_dict)
         except IntegrityError:
-            raise HTTPException(detail="duplicate", status_code=409)
+            raise HTTPException(detail="duplicate email or username", status_code=409)
 
         return res
