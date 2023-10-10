@@ -1,11 +1,12 @@
 from abc import ABC, abstractmethod
+from typing import NoReturn
 
 from ..database.session import async_session
 
 
 class AbstractRepository(ABC):
     @abstractmethod
-    async def add_one(self):
+    async def add_one(self) -> NoReturn:
         raise NotImplementedError
 
 

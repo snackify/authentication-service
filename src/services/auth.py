@@ -8,7 +8,7 @@ from ..utils.hash_password import HashPassword
 
 class AuthService(AuthRepository, HashPassword):
     async def registration(self, user: UserRegistrationRequestSchema):
-        user_dict = user.model_dump()
+        user_dict = user.model_dump()  # todo вынести отсюда этот dump
 
         user_dict["hashed_password"] = self.create_hash(user_dict.pop("password"))
 
