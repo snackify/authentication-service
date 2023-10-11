@@ -11,6 +11,10 @@ class AbstractRepository(ABC):
     async def add_one(self, *args, **kwargs) -> NoReturn:
         raise NotImplementedError
 
+    @abstractmethod
+    async def get_one(self, *args, **kwargs) -> NoReturn:
+        raise NotImplementedError
+
 
 class SQLAlchemyRepository(AbstractRepository):
     model = None
@@ -25,12 +29,8 @@ class SQLAlchemyRepository(AbstractRepository):
 
             return model_obj
 
-    async def get_one_by_email(self, email: str):
+    async def get_one(self, model_field: str, value: str):
         async with async_session() as session:
-            query = select(self.model).where(self.model.email == email)
-            return (await session.execute(query)).scalars().first()
-
-    async def get_one_by_username(self, username: str):
-        async with async_session() as session:
-            query = select(self.model).where(self.model.username == username)
+            field = getattr(self.model, model_field)
+            query = select(self.model).where(field == value)
             return (await session.execute(query)).scalars().first()
