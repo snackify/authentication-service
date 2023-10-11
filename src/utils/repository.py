@@ -6,7 +6,7 @@ from ..database.session import async_session
 
 class AbstractRepository(ABC):
     @abstractmethod
-    async def add_one(self) -> NoReturn:
+    async def add_one(self, *args, **kwargs) -> NoReturn:
         raise NotImplementedError
 
 

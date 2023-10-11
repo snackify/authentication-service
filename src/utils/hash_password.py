@@ -6,9 +6,9 @@ pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 class HashPassword:
     @staticmethod
-    def create_hash(password: str):
+    def create_hash(password: str) -> str:
         return pwd_context.hash(password)
 
-    # @staticmethod
-    # def verify_hash(plain_password: str, hashed_password: str):
-    #     return pwd_context.verify(plain_password, hashed_password)
+    @staticmethod
+    def verify_hash(plain_password: str, hashed_password: str) -> bool:
+        return pwd_context.verify(plain_password, hashed_password)
