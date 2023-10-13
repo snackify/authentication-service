@@ -8,7 +8,7 @@ from .api.include_routers import all_routers
 app = FastAPI(title="Authentication service")
 
 
-async def include_routers(routers) -> None:
+async def include_routers(routers: tuple) -> None:
     """Includes all api specified in the all_routers tuple"""
 
     api_router = APIRouter(prefix="/api")
