@@ -1,12 +1,12 @@
 from sqlalchemy import select
 
-from src.database.session import async_session
-
+from ...database.models.base import Base
+from ...database.session import async_session
 from .abstract import AbstractRepository
 
 
 class SQLAlchemyRepository(AbstractRepository):
-    model = None
+    model: type[Base]
 
     async def add_one(self, data: dict):
         async with async_session() as session:

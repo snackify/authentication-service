@@ -21,3 +21,10 @@ repos:
         language: python
         types: [ python ]
         pass_filenames: false
+
+      - id: mypy
+        name: mypy
+        entry: mypy .
+        language: python
+        types: [ python ]
+        pass_filenames: false

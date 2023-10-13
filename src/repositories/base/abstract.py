@@ -1,12 +1,12 @@
 from abc import ABC, abstractmethod
-from typing import NoReturn
+from typing import Any, NoReturn
 
 
 class AbstractRepository(ABC):
     @abstractmethod
-    async def add_one(self, *args, **kwargs) -> NoReturn:
+    async def add_one(self, *args: Any, **kwargs: Any) -> NoReturn:
         raise NotImplementedError
 
     @abstractmethod
-    async def get_one(self, *args, **kwargs) -> NoReturn:
+    async def get_one(self, *args: Any, **kwargs: Any) -> NoReturn:
         raise NotImplementedError
