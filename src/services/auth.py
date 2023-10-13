@@ -4,10 +4,12 @@ from .validators.auth import AuthValidator
 
 
 class AuthService:
-    def __init__(self) -> None:
-        self.auth_repository = AuthRepository()
-        self.hash_password = HashPassword()
-        self.auth_validator = AuthValidator()
+    def __init__(
+        self, auth_repository: AuthRepository, hash_password: HashPassword, auth_validator: AuthValidator
+    ) -> None:
+        self.auth_repository = auth_repository
+        self.hash_password = hash_password
+        self.auth_validator = auth_validator
 
     async def registration(self, user: dict):
         await self.auth_validator.username_email_validators(username=user["username"], email=user["email"])
