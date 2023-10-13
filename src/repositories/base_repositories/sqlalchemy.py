@@ -1,19 +1,8 @@
-from abc import ABC, abstractmethod
-from typing import NoReturn
-
 from sqlalchemy import select
 
-from ..database.session import async_session
+from src.database.session import async_session
 
-
-class AbstractRepository(ABC):
-    @abstractmethod
-    async def add_one(self, *args, **kwargs) -> NoReturn:
-        raise NotImplementedError
-
-    @abstractmethod
-    async def get_one(self, *args, **kwargs) -> NoReturn:
-        raise NotImplementedError
+from .abstract import AbstractRepository
 
 
 class SQLAlchemyRepository(AbstractRepository):

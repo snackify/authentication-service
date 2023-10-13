@@ -2,11 +2,11 @@ from fastapi import Depends
 
 from ..repositories.auth import AuthRepository
 from ..repositories.dependencies import get_auth_repository
-from ..services.auth import AuthService
-from ..services.validators.auth import AuthValidator
-from ..services.validators.dependencies import get_auth_validator
 from ..utils.dependencies import get_hash_password
 from ..utils.hash_password import HashPassword
+from .auth import AuthService
+from .validators.auth import AuthValidator
+from .validators.dependencies import get_auth_validator
 
 
 def get_auth_service(
